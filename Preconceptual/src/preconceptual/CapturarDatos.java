@@ -24,9 +24,13 @@ public class CapturarDatos extends JFrame {
         fSustantivo1 = new JTextField();
         fSustantivo2 = new JTextField();
         cConector = new JComboBox();
-        
+        cConector.addItem("Seleccione...");
+        cConector.addItem("Es");
+        cConector.addItem("Tiene");
+        cConector.addItem("Verbo");
         bAgregar=new JButton("Agregar");
 
+        //configuración de los paneles
         //panel superior
         JPanel pSuperior = new JPanel(new GridLayout(2, 4));
         pSuperior.add(new JLabel("Sustantivo 1"));
