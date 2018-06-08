@@ -5,6 +5,7 @@
  */
 package preconceptual;
 
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -14,6 +15,7 @@ import java.sql.Statement;
 //import java.sql.Statement;
 import java.util.logging.Logger;
 import java.util.logging.Level;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -54,6 +56,8 @@ public class ConexionSQL {
             Statement sentencia = co.createStatement();
             // Se elimina la tabla en caso de que ya existiese
             sentencia.execute(Datos);
+        }catch(MySQLIntegrityConstraintViolationException ex){
+            JOptionPane.showMessageDialog(null,"No puedes borrar esta triada porque tiene una dependencia");
         } catch (SQLException e) {
             Logger.getLogger(ConexionSQL.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -70,7 +74,6 @@ public class ConexionSQL {
         } catch (SQLException e) {
             Logger.getLogger(ConexionSQL.class.getName()).log(Level.SEVERE, null, e);
         }
-        
         return result;
     }
 
